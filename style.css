@@ -1,0 +1,297 @@
+/* CSS THEMES */
+:root {
+    --font-sans: 'Inter', sans-serif;
+    --toast-bg: #28a745;
+    --toast-text-color: #ffffff;
+}
+
+.theme-dark {
+    --bg-color: #121212;
+    --bg-secondary-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --text-muted-color: #a0a0a0;
+    --border-color: #333333;
+    --accent-color: #007bff;
+    --accent-hover-color: #0056b3;
+    --input-bg-color: #2a2a2a;
+    --input-text-color: #e0e0e0;
+    --btn-secondary-bg: #333;
+    --btn-secondary-hover-bg: #444;
+}
+
+.theme-light {
+    --bg-color: #f4f4f9;
+    --bg-secondary-color: #ffffff;
+    --text-color: #333333;
+    --text-muted-color: #666666;
+    --border-color: #dddddd;
+    --accent-color: #007bff;
+    --accent-hover-color: #0056b3;
+    --input-bg-color: #ffffff;
+    --input-text-color: #333333;
+    --btn-secondary-bg: #e9ecef;
+    --btn-secondary-hover-bg: #d9dce1;
+}
+
+.theme-blue {
+    --bg-color: #0d1117;
+    --bg-secondary-color: #161b22;
+    --text-color: #c9d1d9;
+    --text-muted-color: #8b949e;
+    --border-color: #30363d;
+    --accent-color: #58a6ff;
+    --accent-hover-color: #388bfd;
+    --input-bg-color: #0d1117;
+    --input-text-color: #c9d1d9;
+    --btn-secondary-bg: #21262d;
+    --btn-secondary-hover-bg: #30363d;
+}
+
+
+/* GENERAL STYLES */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: var(--text-muted-color);
+}
+
+/* LAYOUT */
+.generator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .generator-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* FORMS */
+.form-container, .output-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-muted-color);
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23a0a0a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+/* BUTTONS */
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0.75rem;
+}
+
+.controls button img {
+    width: 18px;
+    height: 18px;
+}
+
+#generate-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+#generate-btn:hover {
+    background-color: var(--accent-hover-color);
+}
+
+#copy-btn-id, #copy-btn-en, .copy-gpt-btn {
+    padding: 0.5rem;
+    background-color: var(--btn-secondary-bg);
+    color: var(--text-color);
+}
+#copy-btn-id:hover, #copy-btn-en:hover, .copy-gpt-btn:hover {
+    background-color: var(--btn-secondary-hover-bg);
+}
+
+
+.secondary-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.secondary-controls button {
+    flex-grow: 1;
+    background-color: var(--btn-secondary-bg);
+    color: var(--text-color);
+}
+.secondary-controls button:hover {
+    background-color: var(--btn-secondary-hover-bg);
+}
+
+/* OUTPUT */
+.output-group textarea {
+    background-color: var(--bg-secondary-color);
+    border-color: var(--border-color);
+}
+.output-group textarea:read-only {
+    opacity: 0.8;
+}
+
+/* CHAT GPT PROMPTS */
+.chat-gpt-prompts {
+    position: relative;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.gpt-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+.gpt-buttons button {
+    background-color: var(--btn-secondary-bg);
+    color: var(--text-color);
+    width: 100%;
+}
+.gpt-buttons button:hover {
+     background-color: var(--btn-secondary-hover-bg);
+}
+.chat-gpt-prompts textarea {
+     background-color: var(--bg-secondary-color);
+}
+.copy-gpt-btn {
+    position: absolute;
+    top: 90px;
+    right: 10px;
+    padding: 0.3rem;
+    opacity: 0.7;
+}
+
+.copy-gpt-btn:hover {
+    opacity: 1;
+}
+
+
+/* FOOTER */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted-color);
+}
+
+/* TOAST NOTIFICATION */
+#toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--toast-bg);
+    color: var(--toast-text-color);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+
+#toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -10px);
+} 

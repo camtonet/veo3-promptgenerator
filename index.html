@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veo 3 Prompt Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <div class="container">
+        <header>
+            <h1 id="main-title">Veo 3 Prompt Generator by hilvanto</h1>
+            <p>Buat prompt karakter konsisten untuk model video AI Veo 3 dengan mudah.</p>
+        </header>
+
+        <main class="generator-grid">
+            <div class="form-container">
+                <div class="input-group">
+                    <label for="judul-scene">1. Judul Scene</label>
+                    <input type="text" id="judul-scene" placeholder="Contoh: Terminal bus malam">
+                </div>
+                <div class="input-group">
+                    <label for="deskripsi-karakter">2. Deskripsi Karakter Inti</label>
+                    <textarea id="deskripsi-karakter" rows="8" placeholder="Contoh: Seorang vlogger wanita muda asal Minang berusia 27 tahun.&#10;Perawakan/Bentuk Tubuh: tubuh mungil, tinggi 158cm...&#10;Warna kulit: sawo matang cerah.&#10;Rambut: ikal sebahu, hitam kecokelatan...&#10;Wajah: wajah oval, alis tebal alami...&#10;Pakaian: mengenakan jaket parasut warna kuning..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="suara-karakter">3. Detail Suara Karakter</label>
+                    <textarea id="suara-karakter" rows="6" placeholder="Contoh: Dia berbicara dengan suara wanita muda yang hangat...&#10;Nada: mezzo-soprano.&#10;Timbre: bersahabat dan enerjik.&#10;Aksen/Logat: logat Indonesia dengan sentuhan khas Minang...&#10;PENTING: Seluruh dialog harus dalam Bahasa Indonesia..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="aksi-karakter">4. Aksi Karakter</label>
+                    <input type="text" id="aksi-karakter" placeholder="Contoh: Berjalan di sekitar terminal bus malam...">
+                </div>
+                <div class="input-group">
+                    <label for="ekspresi-karakter">5. Ekspresi Karakter</label>
+                    <input type="text" id="ekspresi-karakter" placeholder="Contoh: Menunjukkan ekspresi kagum dan antusias...">
+                </div>
+                <div class="input-group">
+                    <label for="latar-tempat">6. Latar Tempat & Waktu</label>
+                    <textarea id="latar-tempat" rows="4" placeholder="Contoh: Latar tempat: di terminal bus antar kota malam hari...&#10;Waktu: malam hari, hujan rintik-rintik."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="gerakan-kamera">7. Gerakan Kamera</label>
+                    <select id="gerakan-kamera"></select>
+                </div>
+                 <div class="input-group">
+                    <label for="detail-visual">8. Detail Visual Tambahan</label>
+                    <textarea id="detail-visual" rows="4" placeholder="Pencahayaan: natural dari lampu jalan...&#10;Gaya Video/Art Style: cinematic realistis.&#10;Kualitas Visual: Resolusi 4K."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="suasana">9. Suasana Keseluruhan</label>
+                    <input type="text" id="suasana" placeholder="Contoh: Suasana sibuk, ramai, dengan kesan perjalanan malam...">
+                </div>
+                <div class="input-group">
+                    <label for="suara-lingkungan">10. Suara Lingkungan / Ambience</label>
+                    <input type="text" id="suara-lingkungan" placeholder="Contoh: SOUND: suara mesin bus menyala, pengumuman...">
+                </div>
+                <div class="input-group">
+                    <label for="dialog-karakter">11. Dialog Karakter</label>
+                    <textarea id="dialog-karakter" rows="3" placeholder='Contoh: DIALOG dalam Bahasa Indonesia: Karakter berkata: "Tiap kota punya terminal kayak gini..."'></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="negative-prompt">12. Negative Prompt</label>
+                    <input type="text" id="negative-prompt" placeholder="Contoh: Hindari: teks di layar, subtitle, tulisan di video...">
+                </div>
+            </div>
+
+            <div class="output-container">
+                <div class="controls">
+                    <button id="generate-btn">Hasilkan Prompt</button>
+                    <button id="copy-btn-id" title="Salin Prompt Bahasa Indonesia"><img src="https://api.iconify.design/solar/copy-bold.svg?color=%23ffffff" alt="Copy Icon"> Salin ID</button>
+                    <button id="copy-btn-en" title="Salin Prompt Bahasa Inggris"><img src="https://api.iconify.design/solar/copy-bold.svg?color=%23ffffff" alt="Copy Icon"> Salin EN</button>
+                </div>
+                <div class="output-group">
+                    <label for="output-id">Prompt Bahasa Indonesia (Bisa Diedit)</label>
+                    <textarea id="output-id" rows="15"></textarea>
+                </div>
+                <div class="output-group">
+                    <label for="output-en">Final Prompt (English)</label>
+                    <textarea id="output-en" rows="15" readonly></textarea>
+                </div>
+
+                 <div class="secondary-controls">
+                    <button id="change-style-btn">Ubah Style</button>
+                    <button id="change-title-btn">Ubah Judul</button>
+                </div>
+                
+                <div class="chat-gpt-prompts">
+                    <label>Prompt Bantuan untuk AI Chat</label>
+                    <div class="gpt-buttons">
+                         <button id="gpt-new-story-btn">Buat Cerita Baru</button>
+                         <button id="gpt-next-scene-btn">Buat Scene Lanjutan</button>
+                    </div>
+                    <textarea id="gpt-output" rows="8" readonly placeholder="Klik tombol di atas untuk menghasilkan prompt yang bisa disalin ke AI Chat favorit Anda..."></textarea>
+                    <button id="copy-gpt-btn" class="copy-gpt-btn" title="Salin Prompt Bantuan"><img src="https://api.iconify.design/solar/copy-bold.svg?color=%23ffffff" alt="Copy Icon"> Salin</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Dibuat dengan ❤️ oleh Gemini</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
